@@ -27,7 +27,7 @@ public class MongoConfiguration {
 	}
 
 	public @Bean MongoClient mongoClient() throws UnknownHostException {
-		return new MongoClient("localhost");
+		return new MongoClient("10.68.32.20");
 	}
   
 	public @Bean MongoAdminService mongoAdminService() throws UnknownHostException {

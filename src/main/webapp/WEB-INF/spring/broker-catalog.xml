@@ -14,10 +14,11 @@
   </util:list>
 
   <bean id="serviceDefinition" class="com.pivotal.cf.broker.model.ServiceDefinition">
-    <constructor-arg name="id" value="mongodb"/>
+    <constructor-arg name="id" value="MongoDB-id"/>
     <constructor-arg name="name" value="MongoDB"/>
     <constructor-arg name="description" value="MongoDB Instances"/>
     <constructor-arg name="bindable" value="true"/>
+	<constructor-arg name="metadata" ref="metadata"/>
     <constructor-arg name="plans" ref="plans" /> 
     <property name="tags" ref="tags"/>
   </bean>
@@ -27,10 +28,41 @@
   </util:list>
   
   <bean id="plan" class="com.pivotal.cf.broker.model.Plan">
-    <constructor-arg name="id" value="mongo-plan"/>
-    <constructor-arg name="name" value="Default Mongo Plan"/>
+    <constructor-arg name="id" value="mongo-plan-id"/>
+    <constructor-arg name="name" value="mongo-plan"/>
     <constructor-arg name="description" value="This is a default mongo plan.  All services are created equally."/>  
+    <constructor-arg name="metadata" ref="planMetadata"/>
   </bean>
+   <util:map id="metadata">
+  	<entry key="displayName" value="MongoDB"/>
+  	<entry key="imageUrl" value="http://info.mongodb.com/rs/mongodb/images/MongoDB_Logo_Full.png"/>
+  	<entry key="longDescription" value="MongodDB Service"/>
+  	<entry key="providerDisplayName" value="Pivotal"/>
+  	<entry key="documentationUrl" value="http://www.mongodb.org"/>
+  	<entry key="supportUrl" value="http://www.mongodb.org"/>
+  </util:map>
+
+  <util:map id="planMetadata">
+  	<entry key="costs">
+		  <util:list>
+		  	<util:map>
+				<entry key="amount">
+					<util:map>
+						<entry key="usd" value-type="double" value="0"/>
+			  		</util:map>
+			  </entry>
+			  <entry key="unit" value="MONTHLY"/>
+		  	</util:map>
+		  </util:list>
+	</entry>
+	<entry key="bullets">
+			<util:list>
+			  	<value>Shared MongoDB server</value>
+			  	<value>100 MB Storage</value>
+			  	<value>40 concurrent connections</value>
+		  </util:list>
+  	</entry>
+  </util:map>
   
   <util:list id="tags">
     <value>mongodb</value>
