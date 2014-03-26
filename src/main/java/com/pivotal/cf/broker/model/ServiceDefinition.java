@@ -66,10 +66,15 @@ public class ServiceDefinition {
 	}
 
 	public ServiceDefinition(String id, String name, String description, boolean bindable, List<Plan> plans,
-			List<String> tags, Map<String,Object> metadata, List<String> requires) {
+			Map<String,Object> metadata) {
 		this(id, name, description, bindable, plans);
 		setTags(tags);
 		setMetadata(metadata);
+	}
+	public ServiceDefinition(String id, String name, String description, boolean bindable, List<Plan> plans,
+			List<String> tags, Map<String,Object> metadata, List<String> requires) {
+		this(id, name, description, bindable, plans, metadata);
+		setTags(tags);
 		setRequires(requires);
 	}
 	
